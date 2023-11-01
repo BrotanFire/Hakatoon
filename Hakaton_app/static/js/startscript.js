@@ -15,4 +15,5 @@ async function GetToken()
 const json = await response.json();
 console.log("Успех:", JSON.stringify(json));
 console.log(json.token)
+document.cookie = 'token='+json.token
 }
