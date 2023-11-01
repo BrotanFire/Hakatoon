@@ -16,16 +16,25 @@ const json = await response.json();
 console.log("Успех:", JSON.stringify(json));
 console.log(json.token)
 document.cookie = 'token='+json.token
+ShowAllTasks()
+}
+function getCookie(name) {
+   var value = "; " + document.cookie;
+   var parts = value.split("; " + name + "=");
+   if (parts.length == 2) return parts.pop().split(";").shift();
 }
 
 async function ShowAllTasks()
 {
- let response = await fetch('http://92.51.44.167:8080/api/token', {
+ var token = getCookie('token');
+
+ let response = await fetch('http://92.51.44.167:8080/tasks', {
   method: 'GET',
   headers: {
-    'Authorization': 'Token ad7be1d2088cd1490b5b6f6597080e14df6f404a'
+    'Authorization': 'Token '+token ,
     'Content-Type': 'application/json'
   },
 });
-console.log(response.json)
+let TasksData = await response.json();
+console.log(TasksData)
 }
