@@ -7,15 +7,13 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Sidebars · Bootstrap v5.0</title>
+    <title>2B2T_Manager</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sidebars/">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/navbars/">
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -34,11 +32,6 @@
           font-size: 3.5rem;
         }
       }
-
-
-
-
-
 
 
     </style>
@@ -119,17 +112,17 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
     <div class="container-fluid">
         <a>
-            <img style="width: 150px;" src="{% static 'fonts/Team_LOGO.jpg' %}" alt="Team_LOGO">
+            <img style="width: 150px;" src="{% static 'fonts/Team_LOGO.png' %}" alt="Team_LOGO">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02"
-                aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation" onclick="ShowAllTasks()">
+                aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarsExample02">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link active fs-5" aria-current="page" href="#">Я люблю пельмени!</a>
+                    <a class="nav-link active fs-2" aria-current="page">For managers all over the world</a>
                 </li>
             </ul>
         </div>
@@ -140,52 +133,48 @@
     <div class="row row-cols-1 row-cols-md-2 mb-3">
 
 
-        <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
-            <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none navbar-brand fs-1">2b/2t</a>
-            <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
+        <div class="d-flex flex-column flex-shrink-3 p-3 bg-light" style="width: 280px;">
+            <ul class="">
                 <li class="nav-item">
-                    <a href="#" class="nav-link active fs-3" aria-current="page" data-bs-toggle="modal"
+                    <a href="#" class="nav-link text-dark fs-3"data-bs-toggle="modal"
                        data-bs-target="#TaskAdd" onclick="LoadEmp()">
-                        <svg class="bi me-2" width="32" height="32">
-                            <use xlink:href="#home"/>
-                        </svg>
+                            <img class="bi me-2" style="width: 32px;" src="{% static 'fonts/Add.png' %}">
                         Добавить
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link link-dark fs-3" onclick="ShowReadyTasks()">
-                        <svg class="bi me-2" width="32" height="32">
-                            <use xlink:href="#speedometer2"/>
-                        </svg>
+                    <a href="#" class="nav-link text-dark fs-3" onclick="ShowAllTasks()">
+                            <img class="bi me-2" style="width: 32px;" src="{% static 'fonts/All.png' %}" alt="add_icon">
+                        Все
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link text-dark fs-3" onclick="ShowReadyTasks()">
+                            <img class="bi me-2" style="width: 32px;" src="{% static 'fonts/Done.png' %}" alt="add_icon" >
                         Готовые
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link link-dark fs-3" onclick="ShowNotReadyTasks()">
-                        <svg class="bi me-2" width="32" height="32">
-                            <use xlink:href="#table"/>
-                        </svg>
+                    <a href="#" class="nav-link text-dark fs-3" onclick="ShowNotReadyTasks()">
+                            <img class="bi me-2" style="width: 32px;" src="{% static 'fonts/Negative.png' %}" alt="add_icon" >
                         Не готовые
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link link-dark fs-3">
-                        <svg class="bi me-2" width="32" height="32">
-                            <use xlink:href="#grid"/>
-                        </svg>
+                    <a href="#" class="nav-link text-dark fs-3">
+                            <img class="bi me-2" style="width: 32px;" src="{% static 'fonts/Opisanie.png' %}" alt="add_icon">
                         Описание
                     </a>
                 </li>
             </ul>
         </div>
-        <div class="container">
-            <div class="row row-cols-1 row-4" id="row_start">
+
             </div>
         </div>
+    <div class="container">
+            <div class="row row-cols-1 row-4" id="row_start">
+            </div>
     </div>
-
-
 </main>
 </body>
 
@@ -194,8 +183,8 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="">Создание задачи</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                <h5 class="modal-title"  id="">Создание задачи</h5>
+                <button type="button" class="btn-close"  data-bs-dismiss="modal" aria-label="Закрыть"></button>
             </div>
             <div class="modal-body">
                 <div class="container">
@@ -284,11 +273,13 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="">Закрыть</button>
-                <button type="button" class="btn btn-primary">Изменить</button>
-                <div id="delete_btn">
+                <div id="add_emp_btn">
 
                 </div>
 
+                <div id="delete_btn">
+
+                </div>
             </div>
         </div>
     </div>
@@ -308,7 +299,7 @@
                     <div class="form-group row">
                         <label for="input1" class="col-sm-3 col-form-label">Задача</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="input1">
+                            <a type="text" class="form-control" id="input1"></a>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -353,6 +344,34 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Изменить</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Удалить</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="TaskAddEmp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" >Добавление сотрудника</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть" onload="LoadEmp2()"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <ul class="list-group">
+                            <div class="col">Сотрудник
+                                <select class="form-select" id="emp_select_2" required="">
+                                    <option value="">Выберите...</option>
+                                </select>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div id="addemp">
+
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
             </div>
         </div>
     </div>
