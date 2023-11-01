@@ -21,5 +21,6 @@ from Hakaton_app import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # path('index/', )
     path('', django.urls.include('Hakaton_app.urls'))
 ]
