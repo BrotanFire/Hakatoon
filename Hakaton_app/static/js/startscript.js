@@ -87,7 +87,6 @@ var token = getCookie('token');
   },
 });
 let TaskData  = await response.json();
-console.log(TaskData)
 let title = document.getElementById('title')
 let EmpName = document.getElementById('EmpName')
 let Status = document.getElementById('Status')
@@ -99,7 +98,44 @@ title.innerHTML = 'Задача: ' + TaskData[0].title
 Desc.innerHTML = 'Подробно: ' + TaskData[0].description
 EmpName.innerHTML = 'ФИО: ' +  TaskData[0].assigned_to.first_name +' '+ TaskData[0].assigned_to.second_name
 Status.innerHTML = 'Статус: ' + TaskData[0].status.status_ru
-created_ts.innerHTML = 'Задача создана: ' + dateformat(TaskData[0].created_ts, 'DD.MM.YYYY')
-in_progress_ts.innerHTML = 'Задача принята в работу: ' + TaskData[0].in_progress_ts
-executed_ts.innerHTML = 'Задача выполнена: ' + TaskData[0].executed_ts
+let created_date = Date((TaskData[0].created_ts).toString())
+var date1 = new Date(Date.parse((TaskData[0].created_ts).toString()))
+console.log(date1.toUTCString())
+created_ts.innerHTML = 'Задача создана: ' + date1.toLocaleString()
+date1 = new Date(Date.parse((TaskData[0].in_progress_ts).toString()))
+in_progress_ts.innerHTML = 'Задача принята в работу: ' + date1.toLocaleString()
+date1 = new Date(Date.parse((TaskData[0].executed_ts).toString()))
+executed_ts.innerHTML = 'Задача выполнена: ' + date1.toLocaleString()
+}
+async function AddTask()
+{
+var token = getCookie('token');
+
+ let response = await fetch('http://92.51.44.167:8080/task/'+TaskId, {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Token '+token ,
+    'Content-Type': 'application/json'
+  },
+});
+let TaskData  = await response.json();
+let title = document.getElementById('title')
+let EmpName = document.getElementById('EmpName')
+let Status = document.getElementById('Status')
+let Desc = document.getElementById('Desc')
+let created_ts = document.getElementById('created_ts')
+let in_progress_ts = document.getElementById('in_progress_ts')
+let executed_ts = document.getElementById('executed_ts')
+title.innerHTML = 'Задача: ' + TaskData[0].title
+Desc.innerHTML = 'Подробно: ' + TaskData[0].description
+EmpName.innerHTML = 'ФИО: ' +  TaskData[0].assigned_to.first_name +' '+ TaskData[0].assigned_to.second_name
+Status.innerHTML = 'Статус: ' + TaskData[0].status.status_ru
+let created_date = Date((TaskData[0].created_ts).toString())
+var date1 = new Date(Date.parse((TaskData[0].created_ts).toString()))
+console.log(date1.toUTCString())
+created_ts.innerHTML = 'Задача создана: ' + date1.toLocaleString()
+date1 = new Date(Date.parse((TaskData[0].in_progress_ts).toString()))
+in_progress_ts.innerHTML = 'Задача принята в работу: ' + date1.toLocaleString()
+date1 = new Date(Date.parse((TaskData[0].executed_ts).toString()))
+executed_ts.innerHTML = 'Задача выполнена: ' + date1.toLocaleString()
 }
