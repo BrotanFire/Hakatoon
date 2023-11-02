@@ -287,6 +287,12 @@ for (let i in TasksData)
 			body_text_description.innerHTML = 'Описание: ' + TasksData[i].description
 			let body_text_status =  document.createElement("h6");
 			body_text_status.innerHTML = 'Статус: ' + TasksData[i]['status'].status_ru
+			let body_text_priority =  document.createElement("h6");
+			body_text_priority.innerHTML = 'Приоритет: ' + TasksData[i].priority.priority_ru
+			let body_text_supposed_size =  document.createElement("h6");
+			body_text_supposed_size.innerHTML = 'Планируемый размер: ' + TasksData[i].supposed_size
+			let body_text_actual_size =  document.createElement("h6");
+			body_text_actual_size.innerHTML = 'Фактический размер: ' + TasksData[i].actual_size
 			let div = document.createElement('div');
             div.innerHTML = '<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#TaskInfo" onclick = "ShowTask('+TasksData[i].id+')">Подробнее</button>';
 			Cell.appendChild(div);
@@ -297,6 +303,9 @@ for (let i in TasksData)
 			cell_body.appendChild(body_text)
 			body_text.appendChild(body_text_description)
 			body_text.appendChild(body_text_status)
+			body_text.appendChild(body_text_priority)
+			body_text.appendChild(body_text_supposed_size)
+			body_text.appendChild(body_text_actual_size)
 			cell.appendChild(div)
 		}
 		console.log(TasksData)
@@ -338,6 +347,12 @@ for (let i in TasksData)
 			body_text_description.innerHTML = 'Описание: ' + TasksData[i].description
 			let body_text_status =  document.createElement("h6");
 			body_text_status.innerHTML = 'Статус: ' + TasksData[i]['status'].status_ru
+			let body_text_priority =  document.createElement("h6");
+			body_text_priority.innerHTML = 'Приоритет: ' + TasksData[i].priority.priority_ru
+			let body_text_supposed_size =  document.createElement("h6");
+			body_text_supposed_size.innerHTML = 'Планируемый размер: ' + TasksData[i].supposed_size
+			let body_text_actual_size =  document.createElement("h6");
+			body_text_actual_size.innerHTML = 'Фактический размер: ' + TasksData[i].actual_size
 			let div = document.createElement('div');
             div.innerHTML = '<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#TaskInfo" onclick = "ShowTask('+TasksData[i].id+')">Подробнее</button>';
 			Cell.appendChild(div);
@@ -348,6 +363,9 @@ for (let i in TasksData)
 			cell_body.appendChild(body_text)
 			body_text.appendChild(body_text_description)
 			body_text.appendChild(body_text_status)
+			body_text.appendChild(body_text_priority)
+			body_text.appendChild(body_text_supposed_size)
+			body_text.appendChild(body_text_actual_size)
 			cell.appendChild(div)
 		}
 		let response3 = await fetch('http://92.51.44.167:8080/tasks/in-progress', {
@@ -379,6 +397,12 @@ for (let i in TasksData)
 			body_text_description.innerHTML = 'Описание: ' + TasksData[i].description
 			let body_text_status =  document.createElement("h6");
 			body_text_status.innerHTML = 'Статус: ' + TasksData[i]['status'].status_ru
+			let body_text_priority =  document.createElement("h6");
+			body_text_priority.innerHTML = 'Приоритет: ' + TasksData[i].priority.priority_ru
+			let body_text_supposed_size =  document.createElement("h6");
+			body_text_supposed_size.innerHTML = 'Планируемый размер: ' + TasksData[i].supposed_size
+			let body_text_actual_size =  document.createElement("h6");
+			body_text_actual_size.innerHTML = 'Фактический размер: ' + TasksData[i].actual_size
 			let div = document.createElement('div');
             div.innerHTML = '<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#TaskInfo" onclick = "ShowTask('+TasksData[i].id+')">Подробнее</button>';
 			Cell.appendChild(div);
@@ -389,6 +413,9 @@ for (let i in TasksData)
 			cell_body.appendChild(body_text)
 			body_text.appendChild(body_text_description)
 			body_text.appendChild(body_text_status)
+			body_text.appendChild(body_text_priority)
+			body_text.appendChild(body_text_supposed_size)
+			body_text.appendChild(body_text_actual_size)
 			cell.appendChild(div)
 		}
 		let response2 = await fetch('http://92.51.44.167:8080/tasks/created', {
@@ -420,6 +447,12 @@ for (let i in TasksData)
 			body_text_description.innerHTML = 'Описание: ' + TasksData[i].description
 			let body_text_status =  document.createElement("h6");
 			body_text_status.innerHTML = 'Статус: ' + TasksData[i]['status'].status_ru
+			let body_text_priority =  document.createElement("h6");
+			body_text_priority.innerHTML = 'Приоритет: ' + TasksData[i].priority.priority_ru
+			let body_text_supposed_size =  document.createElement("h6");
+			body_text_supposed_size.innerHTML = 'Планируемый размер: ' + TasksData[i].supposed_size
+			let body_text_actual_size =  document.createElement("h6");
+			body_text_actual_size.innerHTML = 'Фактический размер: ' + TasksData[i].actual_size
 			let div = document.createElement('div');
             div.innerHTML = '<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#TaskInfo" onclick = "ShowTask('+TasksData[i].id+')">Подробнее</button>';
 			Cell.appendChild(div);
@@ -430,6 +463,9 @@ for (let i in TasksData)
 			cell_body.appendChild(body_text)
 			body_text.appendChild(body_text_description)
 			body_text.appendChild(body_text_status)
+			body_text.appendChild(body_text_priority)
+			body_text.appendChild(body_text_supposed_size)
+			body_text.appendChild(body_text_actual_size)
 			cell.appendChild(div)
 		}
 }
