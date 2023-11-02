@@ -133,29 +133,30 @@
     <div class="row row-cols-1 row-cols-md-2 mb-3">
 
 
-        <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
-            <ul class="nav nav-pills flex-column mb-auto">
+        <div class="d-flex flex-column flex-shrink-3 p-3 bg-light" style="width: 280px;">
+            <ul class="">
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-dark fs-3">
-                            <img class="bi me-2" style="width: 32px;" src="{% static 'fonts/Add.png' %}" alt="add_icon">
+                    <a href="#" class="nav-link text-dark fs-3"data-bs-toggle="modal"
+                       data-bs-target="#TaskAdd" onclick="LoadEmp()">
+                            <img class="bi me-2" style="width: 32px;" src="{% static 'fonts/Add.png' %}">
                         Добавить
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link text-dark fs-3">
+                    <a href="#" class="nav-link text-dark fs-3" onclick="ShowAllTasks()">
                             <img class="bi me-2" style="width: 32px;" src="{% static 'fonts/All.png' %}" alt="add_icon">
                         Все
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link text-dark fs-3">
-                            <img class="bi me-2" style="width: 32px;" src="{% static 'fonts/Done.png' %}" alt="add_icon">
+                    <a href="#" class="nav-link text-dark fs-3" onclick="ShowReadyTasks()">
+                            <img class="bi me-2" style="width: 32px;" src="{% static 'fonts/Done.png' %}" alt="add_icon" >
                         Готовые
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link text-dark fs-3">
-                            <img class="bi me-2" style="width: 32px;" src="{% static 'fonts/Negative.png' %}" alt="add_icon">
+                    <a href="#" class="nav-link text-dark fs-3" onclick="ShowNotReadyTasks()">
+                            <img class="bi me-2" style="width: 32px;" src="{% static 'fonts/Negative.png' %}" alt="add_icon" >
                         Не готовые
                     </a>
                 </li>
@@ -167,37 +168,209 @@
                 </li>
             </ul>
         </div>
-                    <div class="container">
-            <div class="row row-cols-1 row-4" id="row_start">
-            </div>
+
             </div>
         </div>
-
-
+    <div class="container">
+            <div class="row row-cols-1 row-4" id="row_start">
+            </div>
+    </div>
 </main>
 </body>
-<div class="modal fade" id="TaskInfo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+
+<div class="modal fade" id="TaskAdd" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
      aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Подробно</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                <h5 class="modal-title"  id="">Создание задачи</h5>
+                <button type="button" class="btn-close"  data-bs-dismiss="modal" aria-label="Закрыть"></button>
             </div>
             <div class="modal-body">
                 <div class="container">
                     <ul class="list-group">
-                        <li class="list-group-item" id="title"></li>
-                        <li class="list-group-item" id="Desc"></li>
-                        <li class="list-group-item" id="EmpName"></li>
-                        <li class="list-group-item" id="Status"></li>
-                        <li class="list-group-item" id="created_ts"></li>
-                        <li class="list-group-item" id="in_progress_ts"></li>
-                        <li class="list-group-item" id="executed_ts"></li>
+                        <div class="row">
+                            <div class="col">Название
+                                <input type="text" class="form-control" id="title_add">
+                            </div>
+                            <div class="col">Сотрудник
+                                <select class="form-select" id="emp_select" required="">
+                                    <option value="">Выберите...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col">Описание
+                            <div class="input-group mb-3">
+                                <textarea id="Desc_Add" class="form-control" aria-label="With textarea"></textarea>
+                            </div>
+                        </div>
                     </ul>
                 </div>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="AddTask()">Добавить
+                </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="TaskInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Подробно</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group row">
+                        <label for="input1" class="col-sm-3 col-form-label">Задача</label>
+                        <div class="col-sm-9">
+                            <a type="text" class="form-control" id="title"> </a>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="input2" class="col-sm-3 col-form-label">Подробно</label>
+                        <div class="col-sm-9">
+                             <a  type="text" class="form-control" id="Desc" style=" height: 100px;"> </a>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="input3" class="col-sm-3 col-form-label">ФИО</label>
+                        <div class="col-sm-9">
+                             <a  type="text" class="form-control" id="EmpName"> </a>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="input4" class="col-sm-3 col-form-label">Статус</label>
+                        <div class="col-sm-9">
+                             <a  type="text" class="form-control" id="Status"> </a>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="input5" class="col-sm-3 col-form-label">Задача создана</label>
+                        <div class="col-sm-9">
+                             <a  type="date" class="form-control" id="created_ts"> </a>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="input6" class="col-sm-3 col-form-label">Задача принята</label>
+                        <div class="col-sm-9">
+                             <a type="date" class="form-control" id="in_progress_ts"> </a>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="input7" class="col-sm-3 col-form-label">Задача выполнена</label>
+                        <div class="col-sm-9">
+                             <a  type="date" class="form-control" id="executed_ts"></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="">Закрыть</button>
+                <div id="add_emp_btn">
+
+                </div>
+
+                <div id="delete_btn">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="EditInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="Task">Подробно</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group row">
+                        <label for="input1" class="col-sm-3 col-form-label">Задача</label>
+                        <div class="col-sm-9">
+                            <a type="text" class="form-control" id="input1"></a>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="input2" class="col-sm-3 col-form-label">Подробно</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="input2">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="input3" class="col-sm-3 col-form-label">ФИО</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="input3">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="input4" class="col-sm-3 col-form-label">Статус</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="input4">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="input5" class="col-sm-3 col-form-label">Задача создана</label>
+                        <div class="col-sm-9">
+                            <input type="date" class="form-control" id="input5">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="input6" class="col-sm-3 col-form-label">Задача принята</label>
+                        <div class="col-sm-9">
+                            <input type="date" class="form-control" id="input6">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="input7" class="col-sm-3 col-form-label">Задача выполнена</label>
+                        <div class="col-sm-9">
+                            <input type="date" class="form-control" id="input7">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Изменить</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Удалить</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="TaskAddEmp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" >Добавление сотрудника</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть" onload="LoadEmp2()"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <ul class="list-group">
+                            <div class="col">Сотрудник
+                                <select class="form-select" id="emp_select_2" required="">
+                                    <option value="">Выберите...</option>
+                                </select>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div id="addemp">
+
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
             </div>
         </div>
