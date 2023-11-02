@@ -61,6 +61,12 @@ for (let i in TasksData)
 			body_text_description.innerHTML = 'Описание: ' + TasksData[i].description
 			let body_text_status =  document.createElement("h6");
 			body_text_status.innerHTML = 'Статус: ' + TasksData[i]['status'].status_ru
+			let body_text_priority =  document.createElement("h6");
+			body_text_priority.innerHTML = 'Приоритет: ' + TasksData[i].priority.priority_ru
+			let body_text_supposed_size =  document.createElement("h6");
+			body_text_supposed_size.innerHTML = 'Планируемый размер: ' + TasksData[i].supposed_size
+			let body_text_actual_size =  document.createElement("h6");
+			body_text_actual_size.innerHTML = 'Фактический размер: ' + TasksData[i].actual_size
 			let div = document.createElement('div');
             div.innerHTML = '<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#TaskInfo" onclick = "ShowTask('+TasksData[i].id+')">Подробнее</button>';
 			Cell.appendChild(div);
@@ -71,6 +77,9 @@ for (let i in TasksData)
 			cell_body.appendChild(body_text)
 			body_text.appendChild(body_text_description)
 			body_text.appendChild(body_text_status)
+			body_text.appendChild(body_text_priority)
+			body_text.appendChild(body_text_supposed_size)
+			body_text.appendChild(body_text_actual_size)
 			cell.appendChild(div)
 		}
 		console.log(TasksData)
@@ -103,19 +112,18 @@ let Desc = document.getElementById('Desc')
 let created_ts = document.getElementById('created_ts')
 let in_progress_ts = document.getElementById('in_progress_ts')
 let executed_ts = document.getElementById('executed_ts')
-title.innerHTML = ""
-Desc.innerHTML = ""
-EmpName.innerHTML = ""
-Status.innerHTML =  ""
-created_ts.innerHTML =  ""
-executed_ts.innerHTML =  ""
-in_progress_ts.innerHTML = ""
+title.innerHTML = " "
+Desc.innerHTML = " "
+EmpName.innerHTML = " "
+Status.innerHTML =  " "
+created_ts.innerHTML =  " "
+executed_ts.innerHTML =  " "
+in_progress_ts.innerHTML = " "
 title.innerHTML = TaskData[0].title
 Desc.innerHTML = TaskData[0].description
 Status.innerHTML =  TaskData[0].status.status_ru
 let created_date = Date((TaskData[0].created_ts).toString())
 var date1 = new Date(Date.parse((TaskData[0].created_ts).toString()))
-console.log(date1.toUTCString())
 created_ts.innerHTML = date1.toLocaleString()
 date1 = new Date(Date.parse((TaskData[0].in_progress_ts).toString()))
 in_progress_ts.innerHTML = date1.toLocaleString()
@@ -134,7 +142,9 @@ if (emp_stat == "null")
 TaskInfo =
 	{
     title:document.getElementById('title_add').value,
-    description:  document.getElementById('Desc_Add').value
+    description:  document.getElementById('Desc_Add').value,
+    priority: document.getElementById('prior_select').value,
+    supposed_size: document.getElementById('dif_add').value,
     }
 }
 else
@@ -143,6 +153,8 @@ TaskInfo =
 	{
     title:document.getElementById('title_add').value,
     description:  document.getElementById('Desc_Add').value,
+    priority: document.getElementById('prior_select').value,
+    supposed_size: document.getElementById('dif_add').value,
     assigned_to: document.getElementById('emp_select').value,
     }
 }

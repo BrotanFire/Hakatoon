@@ -39,7 +39,7 @@
 
     <!-- Custom styles for this template -->
     <link href="{% static 'css/sidebars.css' %}" rel="stylesheet">
-    <link href="{% static 'navbar.css' %}" rel="stylesheet">
+    <link href="{% static 'css/navbar.css' %}" rel="stylesheet">
 </head>
 <body onload="GetToken()">
 
@@ -196,6 +196,18 @@
                             <div class="col">Сотрудник
                                 <select class="form-select" id="emp_select" required="">
                                     <option value="">Выберите...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">Сложность
+                                <input type="number" class="form-control" id="dif_add" step="" min="0" max="8">
+                            </div>
+                            <div class="col">Приоритет
+                                <select class="form-select" id="prior_select" required="">
+                                    <option value="0">Низкий</option>
+                                    <option value="1">Средний</option>
+                                    <option value="2">Высокий</option>
                                 </select>
                             </div>
                         </div>

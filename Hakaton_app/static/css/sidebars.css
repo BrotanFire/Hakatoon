@@ -83,3 +83,39 @@ main {
 
 .fw-semibold { font-weight: 600; }
 .lh-tight { line-height: 1.25; }
+
+.progress {
+    width: 30px;
+    height: 300px;
+    margin: 20px;
+    transform: scaleY(-1);
+  }
+
+  .progress-bar {
+    transition: width 0.5s ease-in-out;
+  }
+
+  .progress-bar.difficulty-1 {
+    background-color: #00c521;
+    height: 20%; /* Задайте ширину, соответствующую первой сложности */
+  }
+
+  .progress-bar.difficulty-2 {
+    background-color: #00d8b4;
+    height: 40%; /* Задайте ширину, соответствующую второй сложности */
+  }
+
+  .progress-bar.difficulty-3 {
+    background-color: #000dc4;
+    height: 60%; /* Задайте ширину, соответствующую третьей сложности */
+  }
+
+  .progress-bar.difficulty-5 {
+    background-color: #f7bd00;
+    height: 80%; /* Задайте ширину, соответствующую третьей сложности */
+  }
+
+  .progress-bar.difficulty-8 {
+    background-color: #bb0000;
+    height: 100%; /* Задайте ширину, соответствующую третьей сложности */
+  }
