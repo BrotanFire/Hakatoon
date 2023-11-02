@@ -1,0 +1,33 @@
+.progress {
+    width: 100px;
+    height: 30px;
+    margin-bottom: 20px;
+  }
+  
+  .progress-bar {
+    background-color: #000000; /* Измените цвет фона, чтобы соответствовать вашему дизайну */
+    transition: width 0.5s ease-in-out;
+  }
+  
+  .progress-bar.difficulty-1 {
+    width: 20%; /* Задайте ширину, соответствующую первой сложности */
+  }
+  
+  .progress-bar.difficulty-2 {
+    width: 40%; /* Задайте ширину, соответствующую второй сложности */
+  }
+  
+  .progress-bar.difficulty-3 {
+    width: 60%; /* Задайте ширину, соответствующую третьей сложности */
+  }
+
+  .progress-bar.difficulty-5 {
+    width: 80%; /* Задайте ширину, соответствующую третьей сложности */
+  }
+
+  .progress-bar.difficulty-8 {
+    width: 100%; /* Задайте ширину, соответствующую третьей сложности */
+  }
+  
+  /* И так далее... */
+  
