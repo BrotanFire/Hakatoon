@@ -112,9 +112,6 @@ executed_ts.innerHTML =  ""
 in_progress_ts.innerHTML = ""
 title.innerHTML = TaskData[0].title
 Desc.innerHTML = TaskData[0].description
-try
-{EmpName.innerHTML = TaskData[0].assigned_to.first_name +' '+ TaskData[0].assigned_to.second_name}
-catch(e){EmpName.innerHTML = ""}
 Status.innerHTML =  TaskData[0].status.status_ru
 let created_date = Date((TaskData[0].created_ts).toString())
 var date1 = new Date(Date.parse((TaskData[0].created_ts).toString()))
@@ -124,6 +121,7 @@ date1 = new Date(Date.parse((TaskData[0].in_progress_ts).toString()))
 in_progress_ts.innerHTML = date1.toLocaleString()
 date1 = new Date(Date.parse((TaskData[0].executed_ts).toString()))
 executed_ts.innerHTML = date1.toLocaleString()
+EmpName.innerHTML = TaskData[0].assigned_to.first_name +' '+ TaskData[0].assigned_to.second_name
 }
 
 
