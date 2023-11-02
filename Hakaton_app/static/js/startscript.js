@@ -1,3 +1,5 @@
+
+
 async function GetToken()
 {
 	let UserInfo =
@@ -17,16 +19,17 @@ document.cookie = "token="+json.token+"; SameSite=None; Secure"
 ShowAllTasks()
 }
 
+
 function getCookie(name) {
    var value = "; " + document.cookie;
    var parts = value.split("; " + name + "=");
    if (parts.length == 2) return parts.pop().split(";").shift();
 }
 
+
 async function ShowAllTasks()
 {
  var token = getCookie('token');
-
  let response = await fetch('http://92.51.44.167:8080/tasks', {
   method: 'GET',
   headers: {
@@ -73,6 +76,7 @@ for (let i in TasksData)
 		console.log(TasksData)
 }
 
+
 async function ShowTask(TaskId)
 {
 var token = getCookie('token');
@@ -84,6 +88,7 @@ var token = getCookie('token');
     'Content-Type': 'application/json'
   },
 });
+
 let TaskData  = await response.json();
 let title = document.getElementById('title')
 let delete_btn = document.getElementById('delete_btn')
@@ -98,9 +103,18 @@ let Desc = document.getElementById('Desc')
 let created_ts = document.getElementById('created_ts')
 let in_progress_ts = document.getElementById('in_progress_ts')
 let executed_ts = document.getElementById('executed_ts')
+title.innerHTML = ""
+Desc.innerHTML = ""
+EmpName.innerHTML = ""
+Status.innerHTML =  ""
+created_ts.innerHTML =  ""
+executed_ts.innerHTML =  ""
+in_progress_ts.innerHTML = ""
 title.innerHTML = TaskData[0].title
 Desc.innerHTML = TaskData[0].description
-EmpName.innerHTML = TaskData[0].assigned_to.first_name +' '+ TaskData[0].assigned_to.second_name
+try
+{EmpName.innerHTML = TaskData[0].assigned_to.first_name +' '+ TaskData[0].assigned_to.second_name}
+catch(e){EmpName.innerHTML = ""}
 Status.innerHTML =  TaskData[0].status.status_ru
 let created_date = Date((TaskData[0].created_ts).toString())
 var date1 = new Date(Date.parse((TaskData[0].created_ts).toString()))
@@ -111,6 +125,8 @@ in_progress_ts.innerHTML = date1.toLocaleString()
 date1 = new Date(Date.parse((TaskData[0].executed_ts).toString()))
 executed_ts.innerHTML = date1.toLocaleString()
 }
+
+
 async function AddTask()
 {
 let emp_stat = document.getElementById('emp_select').value
@@ -144,6 +160,8 @@ var token = getCookie('token');
 console.log(response.json())
 ShowAllTasks()
 }
+
+
 async function LoadEmp()
 {
 var token = getCookie('token');
@@ -170,6 +188,8 @@ emp.innerHTML = EmpData[i].first_name + " " +EmpData[i].second_name
 emplist.appendChild(emp)
 }
 }
+
+
 async function LoadEmp2(id)
 {
 let div2 = document.createElement('addemp');
@@ -199,6 +219,8 @@ emp.innerHTML = EmpData[i].first_name + " " +EmpData[i].second_name
 emplist.appendChild(emp)
 }
 }
+
+
 async function DeleteTask(task_id)
 {
 let TaskDel =
@@ -218,6 +240,8 @@ let TasksData = await response.json();
 alert(TasksData.message)
 ShowAllTasks()
 }
+
+
 async function ShowReadyTasks()
 {
  var token = getCookie('token');
@@ -267,6 +291,7 @@ for (let i in TasksData)
 		}
 		console.log(TasksData)
 }
+
 
 async function ShowNotReadyTasks()
 {
@@ -398,6 +423,8 @@ for (let i in TasksData)
 			cell.appendChild(div)
 		}
 }
+
+
 async function AddEmpTask(task_id)
 {
     let EmpAdd =
